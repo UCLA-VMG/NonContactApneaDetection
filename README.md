@@ -6,9 +6,6 @@ This repository contains the code used in the paper **"Thermal Imaging and Radar
 
 Polysomnography (PSG) is the gold standard for diagnosing sleep disorders, but it is cumbersome and expensive. At-home sleep apnea testing (HSAT) solutions are contact-based, which may not be tolerated by some patient populations. This paper presents the first comparison of radar and thermal imaging for non-contact sleep monitoring. Our results show that thermal imaging outperforms radar in detecting apneas. Additionally, we propose a multimodal method to classify obstructive and central sleep apneas using synchronized radar and thermal data.
 
-- **Thermal method**: Accuracy 0.99, Precision 0.68, Recall 0.74
-- **Radar method**: Accuracy 0.83, Precision 0.13, Recall 0.86
-
 We also provide the code, hardware setup, and circuit schematics for synchronized radar and thermal data collection.
 
 ## Contributions
