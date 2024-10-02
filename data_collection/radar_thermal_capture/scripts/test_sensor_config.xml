@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<sensor_stack>
+    <global>
+        <save_path>D:/config_test/</save_path>
+        <record_time>10</record_time>
+        <num_trials>3</num_trials>
+        <wait_time_init>9</wait_time_init>
+        <wait_time_0>180</wait_time_0>
+        <wait_time_1>180</wait_time_1>
+        <wait_time_2>180</wait_time_2>
+    </global>
+
+    <sensor>
+        <name>NIR_Camera</name>
+        <type>SpinnakerCamera</type>
+        <height>2048</height>
+        <width>2048</width>
+        <camera_id>21290846</camera_id>
+        <camera_name>Grasshopper3</camera_name>
+        <fps>30</fps>
+        <offset_x>0</offset_x>
+        <offset_y>0</offset_y>
+        <pixel_format>Mono</pixel_format>
+        <binning_size>2</binning_size>
+        <exposure_compensation>0.08</exposure_compensation>
+        <exposure_time>8400.0</exposure_time>
+        <gain>0.0</gain>
+        <black_level>5.57</black_level>
+        <hardware_sync>1</hardware_sync>
+        <primary>0</primary>
+    </sensor>
+
+    <sensor>
+        <name>NIR_Camera_mm</name>
+        <type>SpinnakerCamera</type>
+        <height>2048</height>
+        <width>2048</width>
+        <camera_id>21190637</camera_id>
+        <camera_name>Grasshopper3</camera_name>
+        <fps>30</fps>
+        <offset_x>0</offset_x>
+        <offset_y>0</offset_y>
+        <pixel_format>Mono</pixel_format>
+        <binning_size>2</binning_size>
+        <exposure_compensation>0.09</exposure_compensation>
+        <exposure_time>8000.0</exposure_time>
+        <gain>0.0</gain>
+        <black_level>5.08</black_level>
+        <hardware_sync>1</hardware_sync>
+        <primary>0</primary>
+    </sensor>
+
+    <sensor>
+        <name>Thermal_Camera</name>
+        <type>OpenCVCamera</type>
+        <fps>30</fps>
+        <height>640</height>
+        <width>512</width>
+        <camera_id>0</camera_id>
+        <camera_name>Boson</camera_name>
+        <hardware_sync>1</hardware_sync>
+        <primary>0</primary>
+    </sensor>
+
+    <sensor>
+        <name>FMCW_Radar</name>
+        <type>RFEthernet</type>
+        <timeout>1000</timeout>
+        <interface_id>8</interface_id>
+        <reset_fpga_path>C:/Users/Adnan/Documents/Github/syndicate/config/reset_fpga.cmd</reset_fpga_path>
+        <run_mmwave_path>C:/Users/Adnan/Documents/Github/syndicate/config/test_multi_4rx3tx_mmwavestudio.cmd</run_mmwave_path>
+        <close_mmwave_path>C:/Users/Adnan/Documents/Github/syndicate/config/close_mmwavestudio.cmd</close_mmwave_path>
+    </sensor>
+
+    <sensor>
+        <name>Arduino_Serial</name>
+        <type>SerialPort</type>
+        <port_name>\\.\COM14</port_name>
+        <pulse_time>1</pulse_time>
+        <total_time>20</total_time>
+        <baud_rate>9600</baud_rate>
+    </sensor>
+
+    <reset_sensor>
+        <name>FPGA_Reset_Arduino</name>
+        <type>SerialPort</type>
+        <port_name>\\.\COM20</port_name>
+        <pulse_time>0</pulse_time>
+        <total_time>60</total_time>
+        <baud_rate>19200</baud_rate>
+    </reset_sensor>
+</sensor_stack>

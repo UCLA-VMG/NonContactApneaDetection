@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<sensor_stack>
+    
+    <global>
+        <save_path>D:/config_test/</save_path>
+        <record_time>7200</record_time>
+        <num_trials>3</num_trials>
+        <wait_time_0>5</wait_time_0>
+        <wait_time_1>120</wait_time_1>
+        <wait_time_2>120</wait_time_2>
+    </global>
+
+    <sensor>
+        <name>FMCW_Radar</name>
+        <type>RFEthernet</type>
+        <timeout>1000</timeout>
+        <interface_id>8</interface_id>
+        <reset_fpga_path>C:/Users/Adnan/Documents/Github/syndicate/config/reset_fpga.cmd</reset_fpga_path>
+        <run_mmwave_path>C:/Users/Adnan/Documents/Github/syndicate/config/run_multi_4rx3tx_mmwavestudio.cmd</run_mmwave_path>
+        <close_mmwave_path>C:/Users/Adnan/Documents/Github/syndicate/config/close_mmwavestudio.cmd</close_mmwave_path>
+    </sensor>
+
+    <reset_sensor>
+        <name>FPGA_Reset_Arduino</name>
+        <type>SerialPort</type>
+        <port_name>\\.\COM20</port_name>
+        <pulse_time>0</pulse_time>
+        <total_time>60</total_time>
+        <baud_rate>19200</baud_rate>
+    </reset_sensor>
+</sensor_stack>

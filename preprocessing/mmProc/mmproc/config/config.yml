@@ -1,0 +1,1024 @@
+# crop copy
+
+# crop copy
+
+OSA_Thermal_crop_resize:
+    v_3_1:
+        folder_manager:
+            read_dataset_path: "D:\\radar_thermal\\3_1\\Thermal_Camera"
+            write_dataset_path: "D:\\thermal_cropped\\3_1"
+            read_to_write: one_to_one
+        file_manager:
+            visual_data:
+                read:
+                    format: "multiple_imgs"
+                    shape: !!python/tuple [900, 512, 640, 1]
+                    bit_depth: "uint16"
+                    modality: "thermal"
+                    fps: 30
+                    ext: ".tiff"
+                crop:
+                    crop_coords: !!python/tuple [380, 200, 120, 120]
+                    buffer: !!python/tuple [0, 0]
+                # resize_spatial:
+                #     resize_dims: !!python/tuple [256, 256]
+                write:
+                    format: "vid"
+                    fps: 30
+                    ext: ".tiff"
+                    filename: "thermal" # only required if format == multiple_imgs or vid
+                    start_idx: 0 # if format = "single_img"
+                # delete:
+                #     format: "multiple_imgs"
+    v_3_2:
+        folder_manager:
+            read_dataset_path: "D:\\radar_thermal\\3_2\\Thermal_Camera"
+            write_dataset_path: "D:\\thermal_cropped\\3_2"
+            read_to_write: one_to_one
+        file_manager:
+            visual_data:
+                read:
+                    format: "multiple_imgs"
+                    shape: !!python/tuple [900, 512, 640, 1]
+                    bit_depth: "uint16"
+                    modality: "thermal"
+                    fps: 30
+                    ext: ".tiff"
+                crop:
+                    crop_coords: !!python/tuple [380, 200, 120, 120]
+                    buffer: !!python/tuple [0, 0]
+                # resize_spatial:
+                #     resize_dims: !!python/tuple [256, 256]
+                write:
+                    format: "vid"
+                    fps: 30
+                    ext: ".tiff"
+                    filename: "thermal" # only required if format == multiple_imgs
+                    start_idx: 0 # if format = "single_img"
+                # delete:
+                #     format: "multiple_imgs"
+
+# spo2_test:
+#     nir:
+#         folder_manager:
+#             read_dataset_path: "D:\\spo2_verify\\3_1\\RGB_Polarized_Cam"
+#             write_dataset_path: "D:\\spo2_verify_processed\\3_1\\RGB_Polarized_Cam"
+#             read_to_write: one_to_one
+#         file_manager:
+#             visual_data:
+#                 read:
+#                     format: "single_img"
+#                     shape: !!python/tuple [1, 2048, 2448, 3]
+#                     bit_depth: "uint8"
+#                     modality: "nir"
+#                     fps: 30
+#                     # filename: "NIR_CAMERA1_" # only required if format == multiple_imgs
+#                     filename: "RGB_Polarized_Cam__" # only required if format == multiple_imgs
+#                     ext: ".bmp"
+#                 crop:
+#                     crop_coords: !!python/tuple [1300, 1300, 500, 500]
+#                     buffer: !!python/tuple [0, 0]
+#                 write:
+#                     format: "single_img"
+#                     fps: 30
+#                     ext: ".bmp"
+#                     filename: "img_" # only required if format == multiple_imgs
+#                     start_idx: 0 # if format = "multiple_imgs"
+spo2_rename:
+    nir2:
+        folder_manager:
+            read_dataset_path: "D:\\spo2_verify_processed\\6_1\\NIR_CAMERA2"
+            write_dataset_path: "D:\\spo2_verify_processed\\6_1\\NIR_CAMERA2"
+            read_to_write: one_to_one
+        file_manager:
+            visual_data:
+                read:
+                    format: "single_img"
+                    shape: !!python/tuple [1, 480, 640, 1]
+                    bit_depth: "uint8"
+                    modality: "nir"
+                    fps: 30
+                    # filename: "NIR_CAMERA1_" # only required if format == multiple_imgs
+                    filename: "NIR_CAMERA2_" # only required if format == multiple_imgs
+                    ext: ".bmp"
+                write:
+                    format: "single_img"
+                    fps: 30
+                    ext: ".bmp"
+                    filename: "img_" # only required if format == multiple_imgs
+                    start_idx: 0 # if format = "multiple_imgs"
+                delete:
+                    format: "single_img"
+    # nir2:
+    #     folder_manager:
+    #         read_dataset_path: "D:\\spo2_verify\\3_2\\NIR_CAMERA2"
+    #         write_dataset_path: "D:\\spo2_verify_processed\\3_2\\NIR_CAMERA2"
+    #         read_to_write: one_to_one
+    #     file_manager:
+    #         visual_data:
+    #             read:
+    #                 format: "single_img"
+    #                 shape: !!python/tuple [1, 2048, 2048, 1]
+    #                 bit_depth: "uint8"
+    #                 modality: "nir"
+    #                 fps: 30
+    #                 filename: "NIR_CAMERA2_" # only required if format == multiple_imgs
+    #                 ext: ".bmp"
+    #             crop:
+    #                 crop_coords: !!python/tuple [1050, 1250, 400, 400]
+    #                 buffer: !!python/tuple [0, 0]
+    #             write:
+    #                 format: "single_img"
+    #                 fps: 30
+    #                 ext: ".bmp"
+    #                 filename: "img_" # only required if format == multiple_imgs
+    #                 start_idx: 0 # if format = "multiple_imgs"
+    # rgb:
+    #     folder_manager:
+    #         read_dataset_path: "D:\\spo2_verify_processed"
+    #         write_dataset_path: "D:\\spo2_verify_vid"
+    #         read_to_write: one_to_one
+    #     file_manager:
+    #         visual_data:
+    #             read:
+    #                 format: "multiple_imgs"
+    #                 shape: !!python/tuple [1800, 275, 250, 1]
+    #                 bit_depth: "uint8"
+    #                 modality: "nir"
+    #                 fps: 30
+    #                 filename: "img_" # only required if format == multiple_imgs
+    #                 ext: ".bmp"
+    #             write:
+    #                 format: "vid"
+    #                 fps: 30
+    #                 ext: ".avi"
+    #                 filename: "img_" # only required if format == multiple_imgs
+    #                 start_idx: 0 # if format = "single_img"
+
+
+# OSA_NIR_mm_850_crop_resize:
+#     folder_manager:
+#         read_dataset_path: "E:\\patient_5\\NIR_Camera_mm"
+#         write_dataset_path: "E:\\p5_cropped\\NIR_Camera_mm"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "single_img"
+#                 shape: !!python/tuple [1, 1024, 1024, 1]
+#                 bit_depth: "uint8"
+#                 modality: "nir"
+#                 fps: 30
+#                 ext: ".bmp"
+#             crop:
+#                 crop_coords: !!python/tuple [268, 321, 469, 469]
+#                 buffer: !!python/tuple [0, 0]
+#             resize_spatial:
+#                 resize_dims: !!python/tuple [256, 256]
+#             write:
+#                 format: "single_img"
+#                 fps: 30
+#                 ext: ".bmp"
+#                 # filename: "NIR_Camera_" # only required if format == multiple_imgs
+#                 # start_idx: 0 # if format = "single_img"
+#             # delete:
+#             #     format: "single_img"
+
+# OSA_Thermal_crop_resize:
+#     folder_manager:
+#         read_dataset_path: "D:\\v_3_1\\Thermal_Camera"
+#         write_dataset_path: "D:\\proc\\Thermal_Camera\\v_3_1"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "single_img"
+#                 shape: !!python/tuple [1, 512, 640, 1]
+#                 bit_depth: "uint16"
+#                 modality: "thermal"
+#                 fps: 30
+#                 ext: ".tiff"
+#             crop:
+#                 crop_coords: !!python/tuple [95, 190, 276, 276]
+#                 buffer: !!python/tuple [0, 0]
+#             # resize_spatial:
+#             #     resize_dims: !!python/tuple [256, 256]
+#             write:
+#                 format: "single_img"
+#                 fps: 30
+#                 ext: ".tiff"
+#                 filename: "Thermal_Camera_" # only required if format == multiple_imgs
+#                 start_idx: 0 # if format = "single_img"
+#             # delete:
+#             #     format: "multiple_imgs"
+
+
+# OSA_NIR_940_convert_format:
+#     folder_manager:
+#         read_dataset_path: "E:\\p5_cropped\\NIR_Camera"
+#         write_dataset_path: "E:\\p5_cropped\\NIR_Camera"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "multiple_imgs"
+#                 shape: !!python/tuple [1000, 256, 256, 1]
+#                 bit_depth: "uint8"
+#                 modality: "nir"
+#                 fps: 30
+#                 ext: ".bmp"
+#             write:
+#                 format: "vid"
+#                 fps: 30
+#                 ext: ".tiff"
+#                 filename: "NIR_Camera_"
+#                 start_idx: 0 # if format = "single_img"
+#             delete:
+#                 format: "multiple_imgs"
+
+# OSA_NIR_mm_850_convert_format:
+#     folder_manager:
+#         read_dataset_path: "E:\\p5_cropped\\NIR_Camera_mm"
+#         write_dataset_path: "E:\\p5_cropped\\NIR_Camera_mm"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "multiple_imgs"
+#                 shape: !!python/tuple [9000, 256, 256, 1]
+#                 bit_depth: "uint8"
+#                 modality: "nir"
+#                 fps: 30
+#                 ext: ".bmp"
+#             write:
+#                 format: "vid"
+#                 fps: 30
+#                 ext: ".tiff"
+#                 filename: "NIR_Camera_mm_"
+#                 start_idx: 0 # if format = "single_img"
+#             delete:
+#                 format: "multiple_imgs"
+
+# OSA_Thermal_convert_format:
+#     folder_manager:
+#         read_dataset_path: "E:\\p5_cropped\\Thermal_Camera"
+#         write_dataset_path: "E:\\p5_cropped\\Thermal_Camera"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "multiple_imgs"
+#                 shape: !!python/tuple [9000, 256, 256, 1]
+#                 bit_depth: "uint16"
+#                 modality: "nir"
+#                 fps: 30
+#                 ext: ".tiff"
+#             write:
+#                 format: "vid"
+#                 fps: 30
+#                 ext: ".tiff"
+#                 filename: "Thermal_Camera_"
+#                 start_idx: 0 # if format = "single_img"
+#             # delete:
+#             #     format: "multiple_imgs"
+
+# original copy
+
+Copy_ref_timestamps:
+    Copy_ref_timestamps:
+        folder_manager:
+            read_dataset_path: "D:\\spo2_verify"
+            write_dataset_path: "I:\\ts"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: single
+                    ext: ".txt"
+                write: 
+                    format: single
+                copy: 
+                    format: single
+                    ext: ".txt"
+
+offload_data:
+    FPGA_Reset_Arduino_init:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\FPGA_Reset_Arduino"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\FPGA_Reset_Arduino"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                delete:
+                    format: "single"
+
+    NIR_Camera_940_trial_0:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_0\\NIR_Camera"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_0\\NIR_Camera"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                    ext: ".txt"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                    ext: ".txt"
+                delete:
+                    format: "single"
+            visual_data:
+                read:
+                    format: "multiple_imgs"
+                    shape: !!python/tuple [9000, 1024, 1024, 1]
+                    bit_depth: "uint8"
+                    modality: "nir"
+                    fps: 30
+                    ext: ".bmp"
+                write:
+                    format: "vid"
+                    fps: 30
+                    ext: ".tiff"
+                    filename: "NIR_Camera_"
+                    start_idx: 0 # if format = "single_img"
+                delete:
+                    format: "multiple_imgs"
+
+    NIR_Camera_mm_850_trial_0:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_0\\NIR_Camera_mm"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_0\\NIR_Camera_mm"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                    ext: ".txt"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                    ext: ".txt"
+                delete:
+                    format: "single"
+            visual_data:
+                read:
+                    format: "multiple_imgs"
+                    shape: !!python/tuple [9000, 1024, 1024, 1]
+                    bit_depth: "uint8"
+                    modality: "nir"
+                    fps: 30
+                    ext: ".bmp"
+                write:
+                    format: "vid"
+                    fps: 30
+                    ext: ".tiff"
+                    filename: "NIR_Camera_mm_"
+                    start_idx: 0 # if format = "single_img"
+                delete:
+                    format: "multiple_imgs"
+    Thermal_Camera_trial_0:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_0\\Thermal_Camera"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_0\\Thermal_Camera"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                    ext: ".txt"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                    ext: ".txt"
+                delete:
+                    format: "single"
+            visual_data:
+                read:
+                    format: "multiple_imgs"
+                    shape: !!python/tuple [9000, 512, 640, 1]
+                    bit_depth: "uint16"
+                    modality: "thermal"
+                    fps: 30
+                    ext: ".tiff"
+                write:
+                    format: "vid"
+                    fps: 30
+                    ext: ".tiff"
+                    filename: "Thermal_Camera_"
+                    start_idx: 0 # if format = "single_img"
+                delete:
+                    format: "multiple_imgs"
+    FMCW_Radar_trial_0:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_0\\FMCW_Radar"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_0\\FMCW_Radar"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                delete:
+                    format: "single"
+    FPGA_Reset_Arduino_trial_0:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_0\\FPGA_Reset_Arduino"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_0\\FPGA_Reset_Arduino"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                delete:
+                    format: "single"
+    Arduino_Serial_trial_0:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_0\\Arduino_Serial"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_0\\Arduino_Serial"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                delete:
+                    format: "single"
+    
+    NIR_Camera_940_trial_1:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_1\\NIR_Camera"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_1\\NIR_Camera"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                    ext: ".txt"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                    ext: ".txt"
+                delete:
+                    format: "single"
+            visual_data:
+                read:
+                    format: "multiple_imgs"
+                    shape: !!python/tuple [9000, 1024, 1024, 1]
+                    bit_depth: "uint8"
+                    modality: "nir"
+                    fps: 30
+                    ext: ".bmp"
+                write:
+                    format: "vid"
+                    fps: 30
+                    ext: ".tiff"
+                    filename: "NIR_Camera_"
+                    start_idx: 0 # if format = "single_img"
+                delete:
+                    format: "multiple_imgs"
+    NIR_Camera_mm_850_trial_1:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_1\\NIR_Camera_mm"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_1\\NIR_Camera_mm"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                    ext: ".txt"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                    ext: ".txt"
+                delete:
+                    format: "single"
+            visual_data:
+                read:
+                    format: "multiple_imgs"
+                    shape: !!python/tuple [9000, 1024, 1024, 1]
+                    bit_depth: "uint8"
+                    modality: "nir"
+                    fps: 30
+                    ext: ".bmp"
+                write:
+                    format: "vid"
+                    fps: 30
+                    ext: ".tiff"
+                    filename: "NIR_Camera_mm_"
+                    start_idx: 0 # if format = "single_img"
+                delete:
+                    format: "multiple_imgs"
+    Thermal_Camera_trial_1:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_1\\Thermal_Camera"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_1\\Thermal_Camera"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                    ext: ".txt"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                    ext: ".txt"
+                delete:
+                    format: "single"
+            visual_data:
+                read:
+                    format: "multiple_imgs"
+                    shape: !!python/tuple [9000, 512, 640, 1]
+                    bit_depth: "uint16"
+                    modality: "thermal"
+                    fps: 30
+                    ext: ".tiff"
+                write:
+                    format: "vid"
+                    fps: 30
+                    ext: ".tiff"
+                    filename: "Thermal_Camera_"
+                    start_idx: 0 # if format = "single_img"
+                delete:
+                    format: "multiple_imgs"
+    FMCW_Radar_trial_1:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_1\\FMCW_Radar"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_1\\FMCW_Radar"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                delete:
+                    format: "single"
+    FPGA_Reset_Arduino_trial_1:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_1\\FPGA_Reset_Arduino"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_1\\FPGA_Reset_Arduino"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                delete:
+                    format: "single"
+    Arduino_Serial_trial_1:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_1\\Arduino_Serial"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_1\\Arduino_Serial"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                delete:
+                    format: "single"
+    
+    NIR_Camera_940_trial_2:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_2\\NIR_Camera"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_2\\NIR_Camera"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                    ext: ".txt"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                    ext: ".txt"
+                delete:
+                    format: "single"
+            visual_data:
+                read:
+                    format: "multiple_imgs"
+                    shape: !!python/tuple [9000, 1024, 1024, 1]
+                    bit_depth: "uint8"
+                    modality: "nir"
+                    fps: 30
+                    ext: ".bmp"
+                write:
+                    format: "vid"
+                    fps: 30
+                    ext: ".tiff"
+                    filename: "NIR_Camera_"
+                    start_idx: 0 # if format = "single_img"
+                delete:
+                    format: "multiple_imgs"
+    NIR_Camera_mm_850_trial_2:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_2\\NIR_Camera_mm"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_2\\NIR_Camera_mm"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                    ext: ".txt"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                    ext: ".txt"
+                delete:
+                    format: "single"
+            visual_data:
+                read:
+                    format: "multiple_imgs"
+                    shape: !!python/tuple [9000, 1024, 1024, 1]
+                    bit_depth: "uint8"
+                    modality: "nir"
+                    fps: 30
+                    ext: ".bmp"
+                write:
+                    format: "vid"
+                    fps: 30
+                    ext: ".tiff"
+                    filename: "NIR_Camera_mm_"
+                    start_idx: 0 # if format = "single_img"
+                delete:
+                    format: "multiple_imgs"
+    Thermal_Camera_trial_2:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_2\\Thermal_Camera"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_2\\Thermal_Camera"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                    ext: ".txt"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                    ext: ".txt"
+                delete:
+                    format: "single"
+            visual_data:
+                read:
+                    format: "multiple_imgs"
+                    shape: !!python/tuple [9000, 512, 640, 1]
+                    bit_depth: "uint16"
+                    modality: "thermal"
+                    fps: 30
+                    ext: ".tiff"
+                write:
+                    format: "vid"
+                    fps: 30
+                    ext: ".tiff"
+                    filename: "Thermal_Camera_"
+                    start_idx: 0 # if format = "single_img"
+                delete:
+                    format: "multiple_imgs"
+    FMCW_Radar_trial_2:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_2\\FMCW_Radar"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_2\\FMCW_Radar"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                delete:
+                    format: "single"
+    FPGA_Reset_Arduino_trial_2:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_2\\FPGA_Reset_Arduino"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_2\\FPGA_Reset_Arduino"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                delete:
+                    format: "single"
+    Arduino_Serial_trial_2:
+        folder_manager:
+            read_dataset_path: "D:\\patient_25\\trial_2\\Arduino_Serial"
+            write_dataset_path: "F:\\osa_dataset_raw\\patient_25\\trial_2\\Arduino_Serial"
+            read_to_write: one_to_one
+        file_manager:
+            file:
+                read:
+                    format: "single"
+                copy:
+                    format: "single"
+                write:
+                    format: "single"
+                delete:
+                    format: "single"
+
+# OSA_Thermal_convert_format_three_channels:
+#     folder_manager:
+#         read_dataset_path: "D:\\patient_4\\Thermal_Camera"
+#         write_dataset_path: "D:\\patient_4\\Thermal_Camera_squeezed"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "multiple_imgs"
+#                 shape: !!python/tuple [9000, 512, 640, 3]
+#                 bit_depth: "uint8"
+#                 modality: "rgb"
+#                 fps: 30
+#                 ext: ".png"
+#             write:
+#                 format: "vid"
+#                 fps: 30
+#                 ext: ".tiff"
+#                 filename: "Thermal_Camera_"
+#                 start_idx: 0 # if format = "single_img"
+
+# test_bin:
+#     folder_manager:
+#         read_dataset_path: "C:\\Users\\Adnan\\Downloads\\sasha_test_read"
+#         write_dataset_path: "C:\\Users\\Adnan\\Downloads\\sasha_test_write\\bin"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "single_img"
+#                 shape: !!python/tuple [1, 2048, 2448, 1]
+#                 bit_depth: "uint8"
+#                 modality: "polarized"
+#                 fps: 30
+#                 ext: ".bmp"
+#             bin:
+#                 bit_depth: "float64"
+#                 step_size: 2
+#             write:
+#                 format: "single_img"
+#                 # bit_depth: "float64"
+#                 fps: 30
+#                 ext: ".dat" # float 64
+#                 # filename: "bin_"
+#                 start_idx: 0 # if format = "single_img"
+#             # delete:
+#             #     format: "single_img"
+
+# test_demosaic_bin:
+#     folder_manager:
+#         read_dataset_path: "C:\\Users\\Adnan\\Downloads\\sasha_test_read"
+#         write_dataset_path: "C:\\Users\\Adnan\\Downloads\\sasha_test_write\\demosaic_bin"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "single_img"
+#                 shape: !!python/tuple [1, 2048, 2448, 1]
+#                 bit_depth: "uint8"
+#                 modality: "polarized"
+#                 fps: 30
+#                 ext: ".bmp"
+#             demosaic_bin:
+#                 bit_depth: "float64"
+#                 step_size: 2
+#             write:
+#                 format: "single_img"
+#                 # bit_depth: "float64"
+#                 fps: 30
+#                 ext: ".dat"  # float 64
+#                 # filename: "demosaic_bin_"
+#                 start_idx: 0 # if format = "single_img"
+#             # delete:
+#             #     format: "single_img"
+
+####################################################################################################################################################################################################################################################################################################################################
+# # 'sample_rate': 5000, # Rate at which the radar samples from ADC (ksps - kilosamples per second)
+# # 'freq_slope': Frequency slope of the chirp (MHz/us)
+# # 'start_freq': Starting frequency of the chirp (GHz)
+# # 'idle_time': Time before starting next chirp (us)
+# # 'ramp_end_time': Time after sending each chirp (us)
+# test_rf:
+#     folder_manager:
+#         read_dataset_path: "C:\\Users\\Adnan\\Downloads\\osa_test\\FMCW_Radar\\"
+#         write_dataset_path: "C:\\Users\\Adnan\\Downloads\\osa_test\\FMCW_Radar\\"
+#         read_to_write: one_to_one
+#     file_manager:
+#         rf_data:
+#             read:
+#                 format: "single_file"
+#                 params: !!python/tuple [1, 3, 4, 256] # tuple = ("num_chirps", "num_tx", "num_rx", "num_adc_samples")
+#                 velocity_params: !!python/tuple [5000, 60.012, 77, 100, 60] # tuple = ("sample_rate", "freq_slope", "start_freq", "idle_time", "ramp_end_time")
+#                 angle_granularity: 128
+#                 bit_depth: "uint8"
+#                 modality: "rf"
+#                 fps: 30
+#                 ext: ".raw"
+#             # display:
+#             #     display_type: "velocity_angle" # pick one of: "velocity_angle", "velocity_range", "angle_range"
+#             #     convert: True
+#             #     frame_idx: 0
+#             write:
+#                 format: "single_file"
+#                 # bit_depth: "float64"
+#                 fps: 30
+#                 ext: ".npy"  # float 64
+#                 # filename: "demosaic_bin_"
+#                 start_idx: 0 # if format = "single_img"
+
+# Copy_ref_timestamps:
+#     folder_manager:
+#         read_dataset_path: "C:\\Users\\Adnan\\Downloads\\MX800"
+#         write_dataset_path: "C:\\Users\\Adnan\\Downloads\\MX800_proc"
+#         read_to_write: one_to_one
+#     file_manager:
+#         file:
+#             copy_file: ""
+
+# MX800_proc:
+#     folder_manager:
+#         read_dataset_path: "C:\\Users\\Adnan\\Downloads\\test_mx800\\MX800"
+#         write_dataset_path: "C:\\Users\\Adnan\\Downloads\\MX800_proc"
+#         read_to_write: one_to_one
+#     file_manager:
+#         vitals_data:
+#             read:
+#                 format: "raw"
+#                 ext: ".csv"
+#                 sensor_type: "MX800"
+#                 vitals: [] #["NOM_PLETHWaveExport", "NOM_RESPWaveExport", "NOM_ECG_ELEC_POTL_AVFWaveExport", "NOM_ECG_ELEC_POTL_IIWaveExport", "NOM_ECG_ELEC_POTL_MCLWaveExport", "NOM_ECG_ELEC_POTL_VWaveExport", "NOM_TEMP", "NOM_ECG_CARD_BEAT_RATE", "NOM_ECG_AMPL_ST_I", "NOM_ECG_AMPL_ST_II", "NOM_ECG_AMPL_ST_III", "NOM_ECG_AMPL_ST_AVR", "NOM_ECG_AMPL_ST_AVL", "NOM_ECG_AMPL_ST_AVF", "NOM_ECG_AMPL_ST_V", "NOM_ECG_AMPL_ST_MCL", "NOM_PULS_OXIM_SAT_O2", "NOM_PLETH_PULS_RATE", "NOM_PULS_OXIM_PERF_REL", "NOM_PRESS_BLD_NONINV_SYS", "NOM_PRESS_BLD_NONINV_DIA", "NOM_PRESS_BLD_NONINV_MEA"]
+#                 offsets: {}
+#             interpolate:
+#                 # ref_timestamp_file
+#                 filename: "log_timestamps"
+#                 ext: ".txt"
+#             # display:
+#             #     # ref_timestamp_file
+#             #     vitals: []
+#             #     attributes: ["data", "interpolated"]
+#             write:
+#                 format: "dict"
+#                 vitals: [] #["NOM_PLETHWaveExport", "NOM_RESPWaveExport", "NOM_ECG_ELEC_POTL_AVFWaveExport", "NOM_ECG_ELEC_POTL_IIWaveExport", "NOM_ECG_ELEC_POTL_MCLWaveExport", "NOM_ECG_ELEC_POTL_VWaveExport", "NOM_TEMP", "NOM_ECG_CARD_BEAT_RATE", "NOM_ECG_AMPL_ST_I", "NOM_ECG_AMPL_ST_II", "NOM_ECG_AMPL_ST_III", "NOM_ECG_AMPL_ST_AVR", "NOM_ECG_AMPL_ST_AVL", "NOM_ECG_AMPL_ST_AVF", "NOM_ECG_AMPL_ST_V", "NOM_ECG_AMPL_ST_MCL", "NOM_PULS_OXIM_SAT_O2", "NOM_PLETH_PULS_RATE", "NOM_PULS_OXIM_PERF_REL", "NOM_PRESS_BLD_NONINV_SYS", "NOM_PRESS_BLD_NONINV_DIA", "NOM_PRESS_BLD_NONINV_MEA"]
+#                 attributes: [] # ["data", "interpolated"] 
+#                 ext: ".pkl"
+#                 filename: "vital_dict"
+
+
+#############################################################################################################################################################################################################################################################################################################################
+
+
+# "single_img" to # single_img
+# "multiple_imgs" to # multiple_imgs
+# "vid" to # vid
+# "multiple_imgs" to # vid
+# "vid" to # multiple_imgs
+
+
+
+
+
+
+
+
+
+
+
+# OSA_Thermal_crop_resize:
+#     folder_manager:
+#         read_dataset_path: "D:\\patient_4\\Thermal_Camera"
+#         write_dataset_path: "D:\\p4_cropped\\Thermal_Camera"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "single_img"
+#                 shape: !!python/tuple [1, 512, 640, 3]
+#                 bit_depth: "uint8"
+#                 modality: "nir"
+#                 fps: 30
+#                 ext: ".png"
+#             crop:
+#                 crop_coords: !!python/tuple [109, 211, 256, 256]
+#                 buffer: !!python/tuple [0, 0]
+#             # resize_spatial:
+#             #     resize_dims: !!python/tuple [256, 256]
+#             write:
+#                 format: "single_img"
+#                 fps: 30
+#                 ext: ".png"
+#                 # filename: "NIR_Camera_" # only required if format == multiple_imgs
+#                 # start_idx: 0 # if format = "single_img"
+#             # delete:
+#             #     format: "multiple_imgs"
+
+# convert_format:
+#     folder_manager:
+#         read_dataset_path: "C:\\Users\\Adnan\\Downloads\\test_read\\test"
+#         write_dataset_path: "C:\\Users\\Adnan\\Downloads\\test_write\\test"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "single_img"
+#                 shape: !!python/tuple [1, 435, 435, 1]
+#                 bit_depth: "uint8"
+#                 modality: "nir"
+#                 fps: 30
+#                 ext: ".tiff"
+#             resize_spatial:
+#                 resize_dims: !!python/tuple [256, 256]
+#             write:
+#                 format: "single_img"
+#                 fps: 30
+#                 ext: ".bmp"
+#                 filename: "NIR_Camera_"
+#                 start_idx: 0 # if format = "single_img"
+#             delete:
+#                 format: "multiple_imgs"
+
+# crop_and_resize:
+#     folder_manager:
+#         read_dataset_path: "C:\\Users\\Adnan\\Downloads\\test_read\\test"
+#         write_dataset_path: "C:\\Users\\Adnan\\Downloads\\test_write\\test"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "multiple_imgs"
+#                 shape: !!python/tuple [43, 1024, 1024, 1]
+#                 bit_depth: "uint8"
+#                 modality: "nir"
+#                 fps: 30
+#                 ext: ".bmp"
+#             crop:
+#                 crop_coords: !!python/tuple [0, 0, 512, 512]
+#                 buffer: !!python/tuple [0, 0]
+#             resize_spatial:
+#                 resize_dims: !!python/tuple [256, 256]
+#             write:
+#                 format: "vid"
+#                 fps: 30
+#                 ext: ".tiff"
+#                 filename: "NIR_Camera_"
+
+# display:
+#     folder_manager:
+#         read_dataset_path: "C:\\Users\\Adnan\\Downloads\\test_read\\test"
+#         write_dataset_path: "C:\\Users\\Adnan\\Downloads\\test_write\\test"
+#         read_to_write: one_to_one
+#     file_manager:
+#         visual_data:
+#             read:
+#                 format: "multiple_imgs"
+#                 shape: !!python/tuple [43, 256, 256, 1]
+#                 bit_depth: "uint8"
+#                 modality: "nir"
+#                 fps: 30
+#                 ext: ".bmp"
+#             display:
+#                 format: "vid"
+#                 fps: 30
+#                 ext: ".tiff"
+
+# normalize:
+
+# gen_vital:
+
+# check:
